@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  description: |
+    Greg's Get the Things API
+
+  version: 1.8.0
+  title: Greg's GetTheThings
+  contact:
+    email: mint.support@ukho.gov.uk
+tags:
+  - name: things
+paths:
+  /getThings/:
+    get:
+      tags:
+        - things
+      summary: Gets a list of things from an array
+      description: |
+        Get a list of things
+      operationId: getPortAuthorities
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thing'
+        '401':
+          description: Not Acceptable
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
+
+  '/getOneThing/{id}':
+    get:
+      tags:
+        - things
+      summary: Gets a single thing from an array
+      description: |
+        Get a single thing from an array
+      operationId: getPortDetail
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thing'
+components:
+  parameters:
+    id:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+  schemas:
+    Thing:
+      type: object
+      description: |
+        A thing
+      title: Thing
+      required:
+        - message
+      properties:
+        message:
+          description: A message
+          type: string
+    DefaultErrorResponse:
+      type: object
+      title: error
+      properties:
+        detail:
+          type: string
