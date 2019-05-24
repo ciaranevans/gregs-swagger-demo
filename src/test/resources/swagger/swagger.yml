@@ -10,7 +10,7 @@ info:
 tags:
   - name: things
 paths:
-  /getThings/:
+  /getAllThings/:
     get:
       tags:
         - things
@@ -24,7 +24,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Thing'
+                $ref: '#/components/schemas/ThingArray'
         '401':
           description: Not Acceptable
           content:
@@ -49,6 +49,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Thing'
+        '401':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
 components:
   parameters:
     id:
@@ -58,6 +64,14 @@ components:
       schema:
         type: string
   schemas:
+    ThingArray:
+      type: object
+      title: ThingItemsArray
+      properties:
+        ThingArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/Thing'
     Thing:
       type: object
       description: |
