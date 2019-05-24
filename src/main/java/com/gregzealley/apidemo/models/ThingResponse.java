@@ -12,7 +12,7 @@ public class ThingResponse {
     private final List<String> thingItems;
 
     @JsonCreator
-    public ThingResponse(@JsonProperty("thingsItems") final List<String> thingItems) {
+    public ThingResponse(@JsonProperty("ThingArray") final List<String> thingItems) {
         this.thingItems = thingItems;
     }
 

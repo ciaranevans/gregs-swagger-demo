@@ -24,8 +24,8 @@ public class GetController {
         this.thingResponse.addItem("Goodbye");
     }
 
-    @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ThingResponse getAll() {
+    @GetMapping(value = "/getAllThings", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ThingResponse getAllThings() {
         final List<String> things = thingResponse.getThingsItems();
 
         return new ThingResponse(things);

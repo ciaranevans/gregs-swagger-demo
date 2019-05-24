@@ -10,7 +10,7 @@ info:
 tags:
   - name: things
 paths:
-  /getThings/:
+  /getAllThings/:
     get:
       tags:
         - things
@@ -49,6 +49,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Thing'
+        '401':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DefaultErrorResponse'
 components:
   parameters:
     id:
