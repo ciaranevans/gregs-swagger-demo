@@ -24,7 +24,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Thing'
+                $ref: '#/components/schemas/ThingArray'
         '401':
           description: Not Acceptable
           content:
@@ -58,6 +58,14 @@ components:
       schema:
         type: string
   schemas:
+    ThingArray:
+      type: object
+      title: ThingItemsArray
+      properties:
+        ThingArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/Thing'
     Thing:
       type: object
       description: |
